@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/cdn/style.css">
+    <title>Verify (2) - Advanced Vehicle Simulator BETA</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+    <h1 class="center">AVS</h1>
+    <div style="margin-top: 210px;background-color: #1b1c1f;" class="box">
+        <h2 class="center">Verify (Last step!)</h2>
+        <p class="center">Your code is:</p>
+        <h1 class="center" id="code"></h1>
+        <p class="center">Your Account Number is: </p>
+        <h2 class="center" id="acc">Account number: </h2>
+    </div>
+</body>
+<script>
+   var urlp = new URLSearchParams(window.location.search)
+   var code = urlp.get("code")
+   document.getElementById("code").innerText=code
+   document.getElementById("acc").innerText=urlp.get("acc")
+</script>
+</html>

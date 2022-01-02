@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/cdn/style.css">
+    <title>Verify - Advanced Vehicle Simulator BETA</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+    <h1 class="center">AVS</h1>
+    <div style="margin-top: 210px;background-color: #1b1c1f;" class="box">
+        <h2 class="center">Verify</h2>
+        <p class="center">Please enter your discord ID inorder to be verified! (ex. Wumpus#0001)</p>
+       <center><input id="username" placeholder="Enter your discord id here..." type="text"></center>
+       <div style="margin-top: 10px;" class="f center">
+           <button onclick="usernameSubmit(document.getElementById(`username`).value)" class="btn">Next</button>
+        </div>
+    </div>
+</body>
+<script>
+    function usernameSubmit(user) {
+        if (user.includes("#")) {
+            if (user.includes("#a") || user.includes(" ")) {
+                swal("Hey!","Looks like this username is not appliable! are you sure you own this account (You cannot change it later)","warning")
+            }else{
+                fetch("/code/"+user).then(val=> {
+                    val.json().then(data=>{
+                        console.log(data.code)
+                        var acc=Number(data.acc)+Number(data.acc)
+                        window.location="/verify/done?code="+data.code+"&acc="+acc
+                    })
+                })
+            }
+        }else{
+            console.log("NOPE")
+            swal("Oops!","Looks like that username is incorrect! did you add the nametag too? (do Wumpus#0001 instead of Wumpus)","error")
+        }
+    }
+</script>
+</html>

@@ -16,6 +16,9 @@
         <h1 class="center" id="code"></h1>
         <p class="center">Your Account Number is: </p>
         <h2 class="center" id="acc">Account number: </h2>
+        <p class="center">Frequently Asked Questions: How do i verify on the AVS Discord Server? use '!avs verifycode [code] [account number]'</p>
+        <h1 class="center">OR</h1>
+        <h2 class="center" id="cmd">Loading...</h2>
     </div>
 </body>
 <script>
@@ -23,5 +26,6 @@
    var code = urlp.get("code")
    document.getElementById("code").innerText=code
    document.getElementById("acc").innerText=urlp.get("acc")
+   document.getElementById("cmd").innerText=`!avs verifycode ${code} ${urlp.get("acc")}`
 </script>
 </html>

@@ -2,7 +2,7 @@ const express = require("express")
 
 
 const app = express()
-var port = process.env.PORT || 3000
+
 app.get("/", (req,res) => {
     res.sendFile(__dirname+"/index.html")
 })
@@ -27,14 +27,14 @@ var userCount = 0;
 app.get("/code/:user", (req,res) => {
     var random = Math.floor(Math.random() * 9999) + 1471
     res.send({code: random,user: req.params.user,acc: userCount})
-    users.push({code: random},userCount)
+    users.push({code: random, user: req.params.user},userCount)
     userCount=userCount+1
 })
 
 app.get("/get/:id", (req,res) => {
-    res.send({code: users[req.params.id].code})
+    res.send({code: users[req.params.id].code, user: users[req.params.id].user})
 })
 
-app.listen(port, () => {
+app.listen(3000, () => {
     console.log("STARTED")
 })

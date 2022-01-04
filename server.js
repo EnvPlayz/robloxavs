@@ -2,7 +2,7 @@ const express = require("express")
 
 
 const app = express()
-
+var port = process.env.PORT || 3000
 app.get("/", (req,res) => {
     res.sendFile(__dirname+"/index.html")
 })
@@ -35,6 +35,6 @@ app.get("/get/:id", (req,res) => {
     res.send({code: users[req.params.id].code})
 })
 
-app.listen(3000, () => {
+app.listen(port, () => {
     console.log("STARTED")
 })

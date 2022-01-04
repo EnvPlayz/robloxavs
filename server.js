@@ -25,7 +25,7 @@ app.get("/cdn/assets/:file", (req,res) => {
 var users = []
 var userCount = 0;
 app.get("/code/:user", (req,res) => {
-    var random = Math.floor(Math.random() * 9999) + 1471
+    var random = Math.floor(Math.random() * 9999) + 1000
     res.send({code: random,user: req.params.user,acc: userCount})
     users.push({code: random, user: req.params.user},userCount)
     userCount=userCount+1
